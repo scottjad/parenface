@@ -18,7 +18,7 @@
 (defmacro paren-face-add-support (keywords)
   "Generate a lambda expression for use in a hook."
   `(lambda ()
-    (let* ((regexp "(\\|)")
+    (let* ((regexp "(\\|)\\|\\[\\|\\]\\|{\\|}")
            (match (assoc regexp ,keywords)))
       (unless (eq (cdr match) paren-face)
         (setq ,keywords (append (list (cons regexp paren-face)) ,keywords))))))
